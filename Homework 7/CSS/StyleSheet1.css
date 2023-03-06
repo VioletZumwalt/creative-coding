@@ -1,7 +1,7 @@
 ﻿/* this just looks for any body tags in the page */
 body {
     background-color: lightgoldenrodyellow;
-    background-image: url('../images/xanathar.png');
+    background-image: url('../images/xanathar.jpg');
     background-blend-mode: luminosity;
 }
 
