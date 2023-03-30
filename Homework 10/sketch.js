@@ -62,6 +62,7 @@ function draw() {
     // decoration
     fill(255);
     triangle(160, 320, 250, 192, 320, 320)
+
     // right arm
     rotate(-50)
     fill(255, 230, 251);
@@ -83,10 +84,18 @@ function draw() {
     // left leg
     rotate(-50)
     fill(255, 230, 251);
-    rect(180, 335, 20, 100);
+    rect(180, bodyY, 20, 100);
+    bodyY += bodyDirection;
+    if (bodyY <= 0 || bodyY >= 450) {
+        bodyDirection *= -1;
+    }
     // right leg
     fill(255, 230, 251);
-    rect(290, 335, 20, 100);
+    rect(bodyY, 335, 20, 100);
+    bodyY += bodyDirection;
+    if (bodyY <= 0 || bodyY >= 450) {
+        bodyDirection *= -1;
+    }
 
     fill(120);
     textSize(size);
