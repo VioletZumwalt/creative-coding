@@ -33,6 +33,11 @@ function setup() {
     createCharacter(50, 50);
 }
 
+draw();
+setup();
+createBorders();
+createCanvas();
+
 function draw() {
     background(200, 150, 300);
     stroke(0);
@@ -42,8 +47,10 @@ function draw() {
     createBorders(10)
 
     // exit message
-    textSize(16);
-    text("EXIT", width - 50, height - 50)
+    ExitMessage();
+
+    // potential enemy
+    EnemyZ();
 
     //createCharacter(200,350);
     drawCharacter();
@@ -51,6 +58,48 @@ function draw() {
 
 
     // potential enemy
+    EnemyX();
+
+    // potential enemy
+    EnemyB();
+   
+
+    // check to see if the character has left the exit
+    YouWin();
+
+    // create the shape based on the mouse click
+    ClickShape();
+}
+
+function ClickShape() {
+    fill(120, 130, 140);
+    square(mouseShapeX, mouseShapeY, 25);
+}
+
+function OutOfBounds() {
+    if (shapeB > width) {
+        shapeB = 0;
+    }
+    if (shapeB < 0) {
+        shapeB = width;
+    }
+    if (shapeC > height) {
+        shapeC = 0;
+    }
+    if (shapeC < 0) {
+        shapeC = height;
+    }
+}
+function YouWin() {
+    if (characterX > width && characterY > width - 50) {
+        fill(0);
+        stroke(5);
+        textSize(26);
+        text("You Win!", width / 2 - 70, height / 2 - 70);
+    }
+}
+
+function EnemyZ() {
     fill(13, 145, 14);
     // draw the shape
     square(shapeA, shapeZ, 5);
@@ -77,13 +126,8 @@ function draw() {
     if (shapeA < 0) {
         shapeA = height;
     }
-
-    //createCharacter(200,350);
-    drawCharacter();
-    characterMovement();
-
-
-    // potential enemy
+}
+function EnemyX() {
     fill(200, 145, 14);
     // draw the shape
     circle(shapeX, shapeY, 10);
@@ -106,8 +150,14 @@ function draw() {
     if (shapeY < 0) {
         shapeY = height;
     }
+}
 
-    // potential enemy
+function ExitMessage() {
+    textSize(16);
+    text("EXIT", width - 50, height - 50)
+}
+
+function EnemyB() {
     fill(100, 50, 200);
     // draw the shape
     circle(shapeB, shapeC, 15);
@@ -122,30 +172,7 @@ function draw() {
     shapeB += shapeBSpeed;
     shapeC += shapeCSpeed;
     // check to see if the shape has gone out of bounds
-    if (shapeB > width) {
-        shapeB = 0;
-    }
-    if (shapeB < 0) {
-        shapeB = width;
-    }
-    if (shapeC > height) {
-        shapeC = 0;
-    }
-    if (shapeC < 0) {
-        shapeC = height;
-    }
-
-    // check to see if the character has left the exit
-    if (characterX > width && characterY > width - 50) {
-        fill(0);
-        stroke(5);
-        textSize(26);
-        text("You Win!", width / 2 - 70, height / 2 - 70);
-    }
-
-    // create the shape based on the mouse click
-    fill(120, 130, 140);
-    square(mouseShapeX, mouseShapeY, 25);
+    OutOfBounds();
 }
 
 function characterMovement() {
