@@ -12,6 +12,8 @@ var shapeX = 30;
 var shapeY = 50;
 var shapeXs = [];
 var shapeYs = [];
+var shapeZs = [];
+var shapeAs = [];
 var diameters = [];
 var shapeXSpeeds = [];
 var shapeYSpeeds = [];
@@ -23,11 +25,13 @@ var mouseShapeY;
 function setup() {
     createCanvas(500, 600);
     // get a random speed when the it first starts
-    for (var i = 0; i < 50; i++) {
+    for (var i = 0; i < 10; i++) {
         shapeXSpeeds[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
         shapeYSpeeds[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
         shapeXs[i] = getRandomNumber(500);
         shapeYs[i] = getRandomNumber(600);
+        shapeZs[i] = getRandomNumber(500);
+        shapeAs[i] = getRandomNumber(450);
         diameters[i] = getRandomNumber(30);
     }
 
@@ -56,11 +60,26 @@ function draw() {
     // draw the shape
     for (var i = 0; i < shapeXs.length; i++) {
         circle(shapeXs[i], shapeYs[i], diameters[i]);
+        fill(100, 100, 150)
         shapeXSpeeds[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
         shapeYSpeeds[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
-
-
-
+        square(shapeYs[i], shapeXs[i], diameters[i]);
+        fill(200, 50, 300)
+        shapeXSpeeds[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
+        shapeYSpeeds[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
+        fill(50, 50, 50)
+        circle(shapeYs[i], shapeZs[i], diameters[i]);
+        fill(50, 100, 200)
+        shapeXSpeeds[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
+        shapeYSpeeds[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
+        square(shapeXs[i], shapeAs[i], diameters[i]);
+        fill(250, 100, 200)
+        shapeXSpeeds[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
+        shapeYSpeeds[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
+        circle(shapeAs[i], shapeYs[i], diameters[i]);
+        fill(250, 21, 300)
+        shapeXSpeeds[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
+        shapeYSpeeds[i] = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
 
         // move the shape
         shapeXs[i] += shapeXSpeeds[i];
